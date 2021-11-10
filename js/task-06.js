@@ -1,15 +1,17 @@
 const validationInput = document.getElementById("validation-input");
+const inputLength = parseInt(validationInput.dataset.length);
 
-const changeColorBorderInput = () => {
+const changeColorBorderInput = (event) => {
+    const inputValue = event.target.value.trim().length;
+    validationInput.classList.add("invalid");
 
-   if (validationInput.value.length == validationInput.dataset.length) {
-       validationInput.classList.add("valid");
-       
-   }
-   else {
-       validationInput.classList.add("invalid");
-  }
-         
+  if (inputValue === inputLength) {
+	 validationInput.classList.replace('invalid', 'valid');
+	 
+  } else {
+	  validationInput.classList.replace('valid', 'invalid');
+ }
+	      
 };
 
 validationInput.addEventListener("blur", changeColorBorderInput);
